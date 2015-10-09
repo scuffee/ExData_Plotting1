@@ -13,11 +13,11 @@ library(graphics)
 plot1 <- function()
 {
 #locate data 
-#fileUrl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+fileUrl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 #download data file
-#download.file(fileUrl, destfile = "C:/Users/Owner/Documents/specdata/2Fhousehold_power_consumption.zip", method = "libcurl", mode = "wb")
+download.file(fileUrl, destfile = "C:/Users/Owner/Documents/specdata/2Fhousehold_power_consumption.zip", method = "libcurl", mode = "wb")
 #unzip data file
-#unzip("C:/Users/Owner/Documents/specdata/2Fhousehold_power_consumption.zip")
+unzip("C:/Users/Owner/Documents/specdata/2Fhousehold_power_consumption.zip")
 #read data file
 householdPower <-  read.table("C:/Users/Owner/Documents/specdata/household_power_consumption.txt", sep =";", na.strings = c("?",""), header =TRUE)
 #-------------------------------------------------------------------------------------------------------------------------------------------
