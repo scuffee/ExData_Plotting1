@@ -16,13 +16,13 @@ plot4 <- function()
   #locate data 
   fileUrl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
   #download data file
-  download.file(fileUrl, destfile = "C:/Users/Owner/Documents/specdata/2Fhousehold_power_consumption.zip", method = "libcurl", mode = "wb")
+  download.file(fileUrl, destfile = "C:/Users/Sandra/Documents/specdata3/2Fhousehold_power_consumption.zip", method = "libcurl", mode = "wb")
   #unzip data file
-  unzip("C:/Users/Owner/Documents/specdata/2Fhousehold_power_consumption.zip")
+  unzip("C:/Users/Sandra/Documents/specdata3/2Fhousehold_power_consumption.zip")
   #read data file
-  householdPower <-  read.table("C:/Users/Owner/Documents/specdata/household_power_consumption.txt", sep =";", na.strings = c("?",""), header =TRUE)
+  householdPower <-  read.table("C:/Users/Sandra/Documents/specdata3/household_power_consumption.txt", sep =";", na.strings = c("?",""), header =TRUE)
   
- #-------------------------------------------------------------------------------------------------------------------------------------------
+  #-------------------------------------------------------------------------------------------------------------------------------------------
   #manipulate data files
   
   householdPowerDay1 <- filter(householdPower, Date == "1/2/2007") # filter day 1
@@ -36,15 +36,15 @@ plot4 <- function()
   png(file = "plot4.png", width = 480, height = 480)
   par(mfcol = c(2,2))
   with(householdPowerData, {
-  plot(householdPowerData$Time, as.numeric(Global_active_power),type = "l", main = " ",xlab = " ", ylab = "Global Active Power (kilowatts)")
-  plot(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_1),main = " ", xlab = " ", ylab = "Energy sub metering", type = "n")
-  points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_1),type = "l", col = "black")  
-  points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_2),type = "l", col = "red")
-  points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_3),type = "l", col = "blue")
-  legend("topright",pch ="-", col = c("black", "red", "blue"),legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
-  plot(householdPowerData$Time, as.numeric(Voltage), type = "l", main = " ", xlab = "datetime", ylab = "Voltage") 
-  plot(householdPowerData$Time, as.numeric(Global_reactive_power), type = "l", main= " ",xlab = "datetime", ylab = "Global_reactive_power")} 
+    plot(householdPowerData$Time, as.numeric(Global_active_power),type = "l", main = " ",xlab = " ", ylab = "Global Active Power (kilowatts)")
+    plot(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_1),main = " ", xlab = " ", ylab = "Energy sub metering", type = "n")
+    points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_1),type = "l", col = "black")  
+    points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_2),type = "l", col = "red")
+    points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_3),type = "l", col = "blue")
+    legend("topright",pch ="-", col = c("black", "red", "blue"),legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
+    plot(householdPowerData$Time, as.numeric(Voltage), type = "l", main = " ", xlab = "datetime", ylab = "Voltage") 
+    plot(householdPowerData$Time, as.numeric(Global_reactive_power), type = "l", main= " ",xlab = "datetime", ylab = "Global_reactive_power")} 
   )
   dev.off()
-
+  
 } 

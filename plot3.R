@@ -16,11 +16,11 @@ plot3 <- function()
   #locate data 
   fileUrl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
   #download data file
-  download.file(fileUrl, destfile = "C:/Users/Owner/Documents/specdata/2Fhousehold_power_consumption.zip", method = "libcurl", mode = "wb")
+  download.file(fileUrl, destfile = "C:/Users/Sandra/Documents/specdata3/2Fhousehold_power_consumption.zip", method = "libcurl", mode = "wb")
   #unzip data file
-  unzip("C:/Users/Owner/Documents/specdata/2Fhousehold_power_consumption.zip")
+  unzip("C:/Users/Sandra/Documents/specdata3/2Fhousehold_power_consumption.zip")
   #read data file
-  householdPower <-  read.table("C:/Users/Owner/Documents/specdata/household_power_consumption.txt", sep =";", na.strings = c("?",""), header =TRUE)
+  householdPower <-  read.table("C:/Users/Sandra/Documents/specdata3/household_power_consumption.txt", sep =";", na.strings = c("?",""), header =TRUE)
   
   #-------------------------------------------------------------------------------------------------------------------------------------------
   #manipulate data files
@@ -32,13 +32,13 @@ plot3 <- function()
   householdPowerData$TimeTemp <- paste(householdPowerData$Date,householdPowerData$Time) #combine date and time
   householdPowerData$Time <- strptime(householdPowerData$TimeTemp, format = "%Y-%m-%d %H:%M:%S") # format date and time to Positlt
   
-#---------------------------------------------------------------------------------------------------------------------------------------------
-#create histogram representing data
-png(file = "plot3.png", width = 480, height = 480)
-plot(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_1), main = " ",xlab = " ", ylab = "Energy sub metering", type = "n")
-points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_1),type = "l", col = "black")  
-points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_2),type = "l", col = "red")
-points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_3),type = "l", col = "blue")
-legend("topright",pch = "-", col = c("black", "red", "blue"),legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
-dev.off()
+  #---------------------------------------------------------------------------------------------------------------------------------------------
+  #create histogram representing data
+  png(file = "plot3.png", width = 480, height = 480)
+  plot(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_1), main = " ",xlab = " ", ylab = "Energy sub metering", type = "n")
+  points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_1),type = "l", col = "black")  
+  points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_2),type = "l", col = "red")
+  points(householdPowerData$Time, as.numeric(householdPowerData$Sub_metering_3),type = "l", col = "blue")
+  legend("topright",pch = "-", col = c("black", "red", "blue"),legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
+  dev.off()
 } 
